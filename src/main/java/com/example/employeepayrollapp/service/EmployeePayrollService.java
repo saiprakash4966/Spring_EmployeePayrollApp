@@ -20,7 +20,7 @@ public class EmployeePayrollService implements IEmployeePayrollService{
     @Override
     public EmployeePayrollData getEmployeePayrollDataById(int employeeId) {
         EmployeePayrollData employeePayrollData = null;
-        employeePayrollData = new EmployeePayrollData(1, new EmployeePayrollDTO("Clint", 500000));
+        employeePayrollData = new EmployeePayrollData(1, new EmployeePayrollDTO("Prakash", 400000));
         return employeePayrollData;
     }
 
