@@ -30,7 +30,7 @@ class EmployeePayrollData {
         this.gender = employeePayrollDTO.gender;
         this.startDate = employeePayrollDTO.startDate;
         this.note = employeePayrollDTO.note;
-        this.ProfilePic = employeePayrollDTO.ProfilePic;
+        this.ProfilePic = employeePayrollDTO.profilePic;
         this.departments =employeePayrollDTO.departments;
     }
 }
