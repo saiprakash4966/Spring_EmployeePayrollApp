@@ -39,7 +39,7 @@ public class EmployeePayrollRestController {
     @PostMapping("/create")
     public ResponseEntity<ResponseDTO> addEmployeePayrollData(@Valid @RequestBody EmployeePayrollDTO employeePayrollDTO)
     {
-        EmployeePayrollData payrollData=null;
+        
         log.debug("Employee DTO : " +employeePayrollDTO.toString());
         EmployeePayrollData employeePayrollData = iEmployeePayrollService.createEmployeePayrollData(employeePayrollDTO);
         ResponseDTO responseDTO = new ResponseDTO("Created Employee Payroll Data", employeePayrollData);
