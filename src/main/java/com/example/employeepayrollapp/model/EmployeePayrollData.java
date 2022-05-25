@@ -3,34 +3,56 @@ package com.example.employeepayrollapp.model;
 import com.example.employeepayrollapp.dto.EmployeePayrollDTO;
 import lombok.Data;
 
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
 
-public @Data
-class EmployeePayrollData {
+@Entity
+@Table(name = "employee_payroll")
+public @Data class EmployeePayrollData {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "employee_id")
     private int employeeId;
+
+    @Column(name = "name")
     private String name;
+
+    @Column(name = "salary")
     private long salary;
+
+    @Column(name = "gender")
     public String gender;
+
+    @Column(name = "start_date")
     public LocalDate startDate;
+
+    @Column(name = "note")
     public String note;
-    public String ProfilePic;
+
+    @Column(name = "profile_pic")
+    public String profilePic;
+
+    @ElementCollection
+    @CollectionTable(name = "employee_department", joinColumns = @JoinColumn(name = "id"))
+    @Column(name = "department")
     public List<String> departments;
-
-
 
     public EmployeePayrollData() {
     }
 
-    public EmployeePayrollData(int employeeId, EmployeePayrollDTO employeePayrollDTO) {
-        this.employeeId = employeeId;
+    public EmployeePayrollData(EmployeePayrollDTO employeePayrollDTO) {
+        this.updateEmployeePayrollData(employeePayrollDTO);
+    }
+
+    private void updateEmployeePayrollData(EmployeePayrollDTO employeePayrollDTO) {
         this.name = employeePayrollDTO.name;
         this.salary = employeePayrollDTO.salary;
         this.gender = employeePayrollDTO.gender;
         this.startDate = employeePayrollDTO.startDate;
         this.note = employeePayrollDTO.note;
-        this.ProfilePic = employeePayrollDTO.profilePic;
-        this.departments =employeePayrollDTO.departments;
+        this.profilePic = employeePayrollDTO.profilePic;
+        this.departments = employeePayrollDTO.departments;
     }
 }
